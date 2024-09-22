@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  FetchNews:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    command: python FetchNews.py
+    volumes:
+      - ./InternationalNews:/app/InternationalNews
+    env_file:
+      - .env
+
+  query:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    command: python main.py
+    volumes:
+      - ./InternationalNews:/app/InternationalNews
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    networks:
+      - app_network
+  
+  ui:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: streamlit run ui.py
+    env_file:
+      - .env
+    ports:
+      - 8501:8501
+    volumes:
+      - ./ui.py:/app/ui.py
+    networks:
+      - app_network
+    depends_on:
+      - query
+    
+
+networks:
+  app_network:
+    driver: bridge
