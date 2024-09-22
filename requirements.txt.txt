@@ -1,0 +1,8 @@
+pathway
+requests
+datetime
+openai
+together ai
+python-dotenv
+feedparser
+beautifulsoup4
