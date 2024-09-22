@@ -26,4 +26,3 @@ Set environment variables
 Start the application by running main.py.
 Run Streamlit UI.
 
-python main.py
