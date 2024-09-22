@@ -2,7 +2,7 @@ pathway
 requests
 datetime
 openai
-together ai
+togetherai
 python-dotenv
 feedparser
 beautifulsoup4
